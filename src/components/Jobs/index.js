@@ -78,7 +78,7 @@ class Jobs extends Component {
 
     if (response.ok) {
       const newData = {
-        name: data.name,
+        name: data.profile_details.name,
         profileImageUrl: data.profile_details.profile_image_url,
         shortBio: data.profile_details.short_bio,
       }
@@ -333,7 +333,7 @@ class Jobs extends Component {
             <h1 className="filter-name">Type of Employment</h1>
             <ul className="checkbox-filter-list">
               {employmentTypesList.map(each => (
-                <li className="checkbox-holder" key={each.label}>
+                <li className="checkbox-holder" key={each.employmentTypeId}>
                   <input
                     type="checkbox"
                     className="checkbox"
@@ -375,7 +375,7 @@ class Jobs extends Component {
                 placeholder="Search"
                 value={searchInput}
                 onChange={this.onSearch}
-                onKeyDown={this.getJobDetails}
+                onKeyDown={this.searchKeyDown}
               />
               <button
                 type="button"
